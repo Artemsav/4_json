@@ -23,6 +23,7 @@ if __name__ == '__main__':
     #filepath=load_data()
     #namespace=filepath.parse_args(sys.argv[1:])
     #text=namespace.path.read()
-    print (json.dumps({pretty_print_json()}, sort_keys=True, indent=6))
+    newone=json.loads(pretty_print_json())
+    print (json.dumps(newone, sort_keys=True, indent=6))
     #print (json.dumps({pretty_print_json()}))
     #print (json.loads(pretty_print_json()))
