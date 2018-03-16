@@ -26,3 +26,4 @@ def pretty_print_json():
 if __name__ == '__main__':
     pretty_print = json.loads(pretty_print_json())
     print (json.dumps(pretty_print, sort_keys=True, indent=6))
+#that's all
