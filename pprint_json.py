@@ -7,8 +7,7 @@ import sys
 def load_data():
     filepath= argparse.ArgumentParser()
     filepath.add_argument('path', type=argparse.FileType(mode='r', bufsize=-1,encoding="utf-8",errors=None), help='Type in a path!')
-    """with open(filepath, 'r') as filepath:
-        filepath.read()"""
+    
     return filepath
 
 def pretty_print_json():
