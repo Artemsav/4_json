@@ -1,29 +1,24 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import json
 import argparse
-import sys
 
 
 def load_data():
-    filepath = argparse.ArgumentParser()
-    filepath.add_argument('path', type=argparse.FileType(mode='r',
-                                                         bufsize=-1,
-                                                         encoding="utf-8",
-                                                         errors=None),
-                          help='Type in a path!')
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument('path')
+    filepath = parser.parse_args()
     return filepath
 
 
-def pretty_print_json():
+entered_path = load_data().path
 
-    namespace = load_data().parse_args(sys.argv[1:])
-    text = namespace.path.read()
+
+def open_json():
+    with open(entered_path) as f:
+        text = f.read()
     return text
 
 
 if __name__ == '__main__':
-    pretty_print = json.loads(pretty_print_json())
+    pretty_print = json.loads(open_json())
     print (json.dumps(pretty_print, sort_keys=True, indent=6))
-#that's all
