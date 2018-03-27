@@ -8,11 +8,14 @@ def load_data(myfile):
             text = file.read()
         return json.loads(text)
     except IndexError:
-        exit('Type in a path to the .json file')
+        #exit('Type in a path to the .json file')
+        None
     except FileNotFoundError:
-        exit('No such file in directory')
+        #exit('No such file in directory')
+        None
     except ValueError:
-        exit('Error. File have to be in .json format')
+        #exit('Error. File have to be in .json format')
+        None
 
 
 def pretty_json(json_data):
