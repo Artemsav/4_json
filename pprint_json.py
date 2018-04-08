@@ -2,31 +2,30 @@ import json
 import argparse
 
 
-def load_data(myfile):
-    try:
-        with open(myfile) as file:
+def load_data(data_path):
+    with open(data_path) as file:
             text = file.read()
-        return json.loads(text)
-    except IndexError:
-        #exit('Type in a path to the .json file')
-        None
-    except FileNotFoundError:
-        #exit('No such file in directory')
-        None
-    except ValueError:
-        #exit('Error. File have to be in .json format')
-        None
+    return json.loads(text)
 
 
-def pretty_json(json_data):
-    pretty_print = (json.dumps(load_data(myfile), sort_keys=True, indent=6))
+def make_pretty_json(json_data):
+    pretty_print = (json.dumps(load_data(data_path), sort_keys=True, indent=6))
     return pretty_print
 
 
-if __name__ == '__main__':
+def parser_path():
     parser = argparse.ArgumentParser()
     parser.add_argument('path')
     filepath = parser.parse_args()
-    myfile = filepath.path
-    json_data = load_data(myfile)
-    print(pretty_json(json_data))
+    return filepath.path
+
+
+if __name__ == '__main__':
+    try:
+        data_path = parser_path()
+        json_data = data_path
+        print(make_pretty_json(json_data))
+    except FileNotFoundError:
+        exit('No such file in directory')
+    except ValueError:
+        exit('Error. File have to be in .json format')
